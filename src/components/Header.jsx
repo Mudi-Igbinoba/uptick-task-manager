@@ -18,7 +18,7 @@ const Header = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
             <header
                 className={`h-screen mini:flex flex-col justify-between fixed hidden  ${
                     isMenuClosed ? 'mini:w-fit' : 'mini:w-1/5'
-                } w-1/2 border-r transition-all duration-300 border-indigo-950 dark:border-white p-5 shadow-2xl dark:shadow-xl dark:shadow-black/50`}
+                } w-1/2 border-r border-indigo-950 dark:border-white p-5 shadow-2xl dark:shadow-xl dark:shadow-black/50`}
             >
                 <aside className='text-base font-medium space-y-8'>
                     <div
@@ -119,7 +119,7 @@ const Header = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
                                         isMenuClosed
                                             ? 'vertical top-0 translate-y-0'
                                             : 'horizontal left-0 translate-x-0'
-                                    } absolute m-0.5 h-6 w-6  rounded-full bg-indigo-500 dark:bg-white transition-all duration-300`}
+                                    } absolute m-0.5 h-6 w-6  rounded-full bg-indigo-500 dark:bg-white`}
                                 ></div>
                             </div>
 

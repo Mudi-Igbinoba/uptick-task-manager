@@ -15,7 +15,7 @@ function App() {
     }, [allTasks]);
 
     const [darkMode, setDarkMode] = useState(false);
-    const [isMenuClosed, setIsMenuClosed] = useState(false);
+    const [isMenuClosed, setIsMenuClosed] = useState(true);
 
     const handleMenu = () => {
         setIsMenuClosed(!isMenuClosed);

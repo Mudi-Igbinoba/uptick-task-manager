@@ -17,7 +17,7 @@ const MobileMenu = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
             <header
                 className={`h-screen mini:hidden flex flex-col md:w-3/4 w-full justify-between fixed bg-gray-50/95 dark:bg-zinc-900/95 ${
                     isMenuClosed ? '-left-full' : 'left-0 '
-                }  border-r transition-all duration-300 border-indigo-950 dark:border-white p-5 shadow-2xl dark:shadow-xl dark:shadow-black/50 z-50`}
+                }  border-r border-indigo-950 dark:border-white p-5 shadow-2xl dark:shadow-xl dark:shadow-black/50 z-50`}
             >
                 <aside className='text-base font-medium space-y-8'>
                     <div
@@ -93,7 +93,7 @@ const MobileMenu = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
                                     checked={dark}
                                     onChange={handleDarkMode}
                                 ></input>
-                                <div className='toggle-switch absolute m-0.5 h-6 w-6 horizontal left-0 translate-x-0  rounded-full bg-indigo-500 dark:bg-white transition-all duration-300'></div>
+                                <div className='toggle-switch absolute m-0.5 h-6 w-6 horizontal left-0 translate-x-0  rounded-full bg-indigo-500 dark:bg-white'></div>
                             </div>
 
                             {dark ? (
