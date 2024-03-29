@@ -1,44 +1,32 @@
-import dayjs from 'dayjs';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { nanoid } from 'nanoid';
-import * as Yup from 'yup';
+import { MdClose } from 'react-icons/md';
 import PropTypes from 'prop-types';
-import MobileHeader from '../components/Menus/MobileHeader';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import * as Yup from 'yup';
+import dayjs from 'dayjs';
 
-const AddTask = ({ allTasks, setAllTasks, dark, handleMenu }) => {
+const EditModal = ({ allTasks, setAllTasks, taskID, setIsEditModalOpen }) => {
+    const currentTask = allTasks.find((task) => task.id === taskID);
     const todaysDate = dayjs().format('YYYY-MM-DD');
 
     return (
-        <>
-            <MobileHeader dark={dark} handleMenu={handleMenu} />
-
-            <section className='py-12 px-5 container mx-auto text-center'>
-                <h2 className='text-2xl font-bold'>Add Task</h2>
-                <p className=''>
-                    Fill up the form below with the required details about your
-                    task
-                </p>
+        <div className='bg-gray-300/40 fixed flex justify-center items-center top-0 left-0 right-0 h-screen'>
+            <div className='w-10/12 mx-auto rounded-2xl p-10 bg-white'>
+                <button
+                    className='ml-auto block'
+                    onClick={() => setIsEditModalOpen(false)}
+                >
+                    <MdClose />
+                </button>
+                <h3>Edit Modal: {taskID}</h3>
                 <Formik
                     initialValues={{
-                        title: '',
-                        desc: '',
-                        dueDate: todaysDate,
-                        isCompleted: false
+                        title: currentTask.title,
+                        desc: currentTask.desc,
+                        dueDate: currentTask.dueDate,
+                        isCompleted: currentTask.isCompleted
                     }}
                     validationSchema={Yup.object({
-                        title: Yup.string()
-                            .required('Task Title is required!')
-                            .test(
-                                'duplicate-task',
-                                'Task with same title already exists!',
-                                function (value) {
-                                    const existingTask = allTasks.find(
-                                        (task) => task.title === value
-                                    );
-                                    return !existingTask;
-                                }
-                            ),
-
+                        title: Yup.string().required('Task Title is required!'),
                         desc: Yup.string().required(
                             'Task Description is required!'
                         ),
@@ -48,10 +36,16 @@ const AddTask = ({ allTasks, setAllTasks, dark, handleMenu }) => {
                         )
                     })}
                     onSubmit={(values) => {
-                        setAllTasks([...allTasks, { ...values, id: nanoid() }]);
+                        setAllTasks((prevTasks) =>
+                            prevTasks.map((task) =>
+                                task.id === taskID
+                                    ? { ...task, ...values }
+                                    : task
+                            )
+                        );
                     }}
                 >
-                    <Form className='space-y-8 mx-auto'>
+                    <Form className='grid grid-cols-2 gap-4 mx-auto'>
                         <div>
                             <label htmlFor='title'>Title</label>
                             <br />
@@ -96,33 +90,25 @@ const AddTask = ({ allTasks, setAllTasks, dark, handleMenu }) => {
                             <ErrorMessage name='dueDate' />
                         </div>
 
-                        <div className='grid grid-cols-2'>
+                        <div className=''>
                             <button
                                 type='submit'
                                 className='rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
                             >
-                                Add
-                            </button>
-
-                            <button
-                                type='reset'
-                                className='rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-                            >
-                                Reset
+                                Update
                             </button>
                         </div>
                     </Form>
                 </Formik>
-            </section>
-        </>
+            </div>
+        </div>
     );
 };
 
-AddTask.propTypes = {
+EditModal.propTypes = {
     allTasks: PropTypes.array,
     setAllTasks: PropTypes.func,
-    dark: PropTypes.bool,
-    handleMenu: PropTypes.func
+    taskID: PropTypes.string,
+    setIsEditModalOpen: PropTypes.func
 };
-
-export default AddTask;
+export default EditModal;

@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .nav-link {
+        @apply duration-300 p-2.5 flex items-center hover:text-white hover:rounded-lg hover:bg-indigo-500  focus:bg-indigo-500 focus:text-white     dark:hover:text-indigo-500 dark:hover:bg-white  dark:focus:bg-white dark:focus:text-indigo-500;
+    }
+
+    .active .nav-link {
+        @apply bg-indigo-500 text-white dark:bg-white dark:text-indigo-500 rounded-lg;
+    }
+
+    .toggle-input:checked + .toggle-switch.horizontal {
+        @apply left-auto translate-x-[132%];
+    }
+
+    .toggle-input:checked + .toggle-switch.vertical {
+        @apply top-auto translate-y-[132%];
+    }
+
+    * {
+        @apply transition-all duration-300;
+    }
+}
