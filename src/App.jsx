@@ -27,7 +27,7 @@ function App() {
 
     return (
         <div
-            className={`mini:flex h-screen text-gray-950 dark:text-white bg-gray-50 dark:bg-zinc-900 font-montalt text-sm  ${
+            className={`mini:flex h-full text-gray-950 dark:text-white bg-gray-50 dark:bg-zinc-900 font-montalt text-sm transition-all duration-300  ${
                 darkMode && 'dark'
             }`}
         >
@@ -39,7 +39,7 @@ function App() {
             />
 
             <main
-                className={`w-full z-0  ${
+                className={`w-full z-0 transition-all duration-300 ${
                     isMenuClosed ? 'mini:ml-[105px]' : 'mini:ml-[20%]'
                 }`}
             >

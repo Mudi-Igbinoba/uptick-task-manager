@@ -16,7 +16,7 @@ const Header = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
     return (
         <>
             <header
-                className={`h-screen mini:flex flex-col justify-between fixed hidden  ${
+                className={`h-screen mini:flex flex-col transition-all duration-300 justify-between fixed hidden  ${
                     isMenuClosed ? 'mini:w-fit' : 'mini:w-1/5'
                 } w-1/2 border-r border-indigo-950 dark:border-white p-5 shadow-2xl dark:shadow-xl dark:shadow-black/50`}
             >
@@ -26,11 +26,14 @@ const Header = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
                             isMenuClosed && 'gap-2'
                         }`}
                     >
-                        <h1 className='font-ojuju font-bold text-3xl flex items-center m-0 text-indigo-500'>
+                        <h1 className='font-ojuju font-bold text-3xl transition-all duration-300 flex items-center m-0 text-indigo-500'>
                             <MdCloudCircle className='mr-1.5' />
                             {!isMenuClosed && 'UpTask'}
                         </h1>
-                        <button className='text-xl' onClick={handleMenu}>
+                        <button
+                            className='text-xl transition-all duration-300'
+                            onClick={handleMenu}
+                        >
                             {dark ? (
                                 <BsLayoutSidebarInset />
                             ) : (
@@ -47,7 +50,7 @@ const Header = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
                                     }`}
                                 >
                                     <TbSmartHome
-                                        className={`text-xl ${
+                                        className={`text-xl transition-all duration-300 ${
                                             !isMenuClosed && 'mr-2'
                                         }`}
                                     />{' '}
@@ -62,7 +65,7 @@ const Header = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
                                     }`}
                                 >
                                     <MdAddTask
-                                        className={`text-xl ${
+                                        className={`text-xl transition-all duration-300 ${
                                             !isMenuClosed && 'mr-2'
                                         }`}
                                     />{' '}
@@ -77,7 +80,7 @@ const Header = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
                                     }`}
                                 >
                                     <GoTasklist
-                                        className={`text-xl ${
+                                        className={`text-xl transition-all duration-300 ${
                                             !isMenuClosed && 'mr-2'
                                         }`}
                                     />{' '}
@@ -88,7 +91,7 @@ const Header = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
                     </nav>
                 </aside>
                 <div className='space-y-8'>
-                    <button className={'toggle-wrap block mx-auto'}>
+                    <button className='toggle-wrap block mx-auto transition-all duration-300'>
                         <label
                             htmlFor='toggle'
                             className={`flex relative items-center text-2xl ${
@@ -119,7 +122,7 @@ const Header = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
                                         isMenuClosed
                                             ? 'vertical top-0 translate-y-0'
                                             : 'horizontal left-0 translate-x-0'
-                                    } absolute m-0.5 h-6 w-6  rounded-full bg-indigo-500 dark:bg-white`}
+                                    } transition-all duration-300 absolute m-0.5 h-6 w-6  rounded-full bg-indigo-500 dark:bg-white`}
                                 ></div>
                             </div>
 

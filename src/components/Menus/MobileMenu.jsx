@@ -17,7 +17,7 @@ const MobileMenu = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
             <header
                 className={`h-screen mini:hidden flex flex-col md:w-3/4 w-full justify-between fixed bg-gray-50/95 dark:bg-zinc-900/95 ${
                     isMenuClosed ? '-left-full' : 'left-0 '
-                }  border-r border-indigo-950 dark:border-white p-5 shadow-2xl dark:shadow-xl dark:shadow-black/50 z-50`}
+                } transition-all duration-300 border-r border-indigo-950 dark:border-white p-5 shadow-2xl dark:shadow-xl dark:shadow-black/50 z-50`}
             >
                 <aside className='text-base font-medium space-y-8'>
                     <div
@@ -25,11 +25,14 @@ const MobileMenu = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
                             isMenuClosed && 'gap-2'
                         }`}
                     >
-                        <h1 className='font-ojuju font-bold text-3xl flex items-center m-0 text-indigo-500'>
+                        <h1 className='font-ojuju transition-all duration-300 font-bold text-3xl flex items-center m-0 text-indigo-500'>
                             <MdCloudCircle className='mr-1.5' />
                             UpTask
                         </h1>
-                        <button className='text-xl' onClick={handleMenu}>
+                        <button
+                            className='text-xl transition-all duration-300'
+                            onClick={handleMenu}
+                        >
                             {dark ? (
                                 <BsLayoutSidebarInset />
                             ) : (
@@ -45,7 +48,7 @@ const MobileMenu = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
                                 onClick={handleMenu}
                             >
                                 <li className='nav-link'>
-                                    <TbSmartHome className='text-xl mr-2' />{' '}
+                                    <TbSmartHome className='text-xl mr-2 transition-all duration-300' />{' '}
                                     Home
                                 </li>
                             </NavLink>
@@ -56,8 +59,8 @@ const MobileMenu = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
                                 onClick={handleMenu}
                             >
                                 <li className='nav-link'>
-                                    <MdAddTask className='text-xl mr-2' /> Add
-                                    Tasks
+                                    <MdAddTask className='text-xl mr-2 transition-all duration-300' />{' '}
+                                    Add Tasks
                                 </li>
                             </NavLink>
 
@@ -67,15 +70,15 @@ const MobileMenu = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
                                 onClick={handleMenu}
                             >
                                 <li className='nav-link'>
-                                    <GoTasklist className='text-xl mr-2' /> View
-                                    Tasks
+                                    <GoTasklist className='text-xl mr-2 transition-all duration-300' />{' '}
+                                    View Tasks
                                 </li>
                             </NavLink>
                         </ul>
                     </nav>
                 </aside>
                 <div className='space-y-8'>
-                    <button className={'toggle-wrap block mx-auto'}>
+                    <button className='toggle-wrap block mx-auto transition-all duration-300'>
                         <label
                             htmlFor='toggle'
                             className='flex relative items-center text-2xl gap-x-2'
@@ -93,7 +96,7 @@ const MobileMenu = ({ dark, handleDarkMode, isMenuClosed, handleMenu }) => {
                                     checked={dark}
                                     onChange={handleDarkMode}
                                 ></input>
-                                <div className='toggle-switch absolute m-0.5 h-6 w-6 horizontal left-0 translate-x-0  rounded-full bg-indigo-500 dark:bg-white'></div>
+                                <div className='toggle-switch transition-all duration-300 absolute m-0.5 h-6 w-6 horizontal left-0 translate-x-0  rounded-full bg-indigo-500 dark:bg-white'></div>
                             </div>
 
                             {dark ? (

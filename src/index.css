@@ -4,7 +4,7 @@
 
 @layer components {
     .nav-link {
-        @apply p-2.5 flex items-center hover:text-white hover:rounded-lg hover:bg-indigo-500  focus:bg-indigo-500 focus:text-white     dark:hover:text-indigo-500 dark:hover:bg-white  dark:focus:bg-white dark:focus:text-indigo-500;
+        @apply transition-all duration-300 p-2.5 flex items-center hover:text-white hover:rounded-lg hover:bg-indigo-500  focus:bg-indigo-500 focus:text-white     dark:hover:text-indigo-500 dark:hover:bg-white  dark:focus:bg-white dark:focus:text-indigo-500;
     }
 
     .active .nav-link {
@@ -19,7 +19,7 @@
         @apply top-auto translate-y-[132%];
     }
 
-    * {
+    /* * {
         @apply transition-all duration-300;
-    }
+    } */
 }
